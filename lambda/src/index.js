@@ -16,23 +16,38 @@ EchoSonos.prototype.intentHandlers = {
     // register custom intent handlers
     PlayIntent: function (intent, session, response) {
         console.log("PlayIntent received");
-        options.path = '/preset/'+encodeURIComponent(intent.slots.Preset.value);
+        options.path = '/sonos/preset/'+encodeURIComponent(intent.slots.Preset.value);
         httpreq(options, response, "Playing " + intent.slots.Preset.value);
     },
     PauseIntent: function (intent, session, response) {
         console.log("PauseIntent received");
-        options.path = '/pauseall';
+        options.path = '/sonos/pauseall';
         httpreq(options, response, "Pausing");
     },
     VolumeDownIntent: function (intent, session, response) {
         console.log("VolumeDownIntent received");
-        options.path = '/groupVolume/-10';
+        options.path = '/sonos/groupVolume/-20';
         httpreq(options, response, "OK");
     },
     VolumeUpIntent: function (intent, session, response) {
         console.log("VolumeUpIntent received");
-        options.path = '/groupVolume/+10';
+        options.path = '/sonos/groupVolume/+20';
         httpreq(options, response, "OK");
+    },
+    VolumeLoudIntent: function (intent, session, response) {
+        console.log("VolumeLoudIntent received");
+        options.path = '/sonos/groupVolume/80';
+        httpreq(options, response, "OK");
+    },
+    VolumeSoftIntent: function (intent, session, response) {
+        console.log("VolumeSoftIntent received");
+        options.path = '/sonos/groupVolume/40';
+        httpreq(options, response, "OK");
+    },
+    PartyIntent: function (intent, session, response) {
+        console.log("PartyIntent received");
+        options.path = '/sonos/party';
+        httpreq(options, response, "Let's Party!");
     }
 };
 
