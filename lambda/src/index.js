@@ -46,7 +46,7 @@ EchoSonos.prototype.intentHandlers = {
     },
     PartyIntent: function (intent, session, response) {
         console.log("PartyIntent received");
-        options.path = '/sonos/party';
+        options.path = '/sonos/preset/party';
         httpreq(options, response, "Let's Party!");
     }
 };
